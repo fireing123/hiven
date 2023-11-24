@@ -1,0 +1,13 @@
+{
+    "scene": "test/example",
+    "chats": [
+        {
+            "obj": "player",
+            "say": {
+                "text": "와 #샌즈#",
+                "effect": ["color=red", "/color"],
+                "speed": [1,1,1,1,1,1]
+            }
+        }
+    ]
+}
