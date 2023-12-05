@@ -5,8 +5,8 @@ using UnityEngine;
 public class PlayerControll : MonoBehaviour
 {
 
-    public int move = 20;
-    public int running = 35;
+    public int move = 70;
+    public int running = 140;
     public int jump = 5;
 
     Rigidbody2D rb;
@@ -26,9 +26,11 @@ public class PlayerControll : MonoBehaviour
             if (GameModeManger.isPlayerRun)
             {
                 Move(running);
+                Debug.Log("Run");
             } else
             {
                 Move(move);
+                Debug.Log("Move");
             }
         }
         KeyEvent();
@@ -39,6 +41,16 @@ public class PlayerControll : MonoBehaviour
         if (Input.GetKey(KeyCode.Space) && GameModeManger.isCanPlayerJump)
         {
             Jump(jump);
+        }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            GameModeManger.Running();
+            Debug.Log("Running");
+        } 
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            GameModeManger.Moving();
+            Debug.Log("Moving");
         }
 
     }
