@@ -26,4 +26,14 @@ public static class GameModeManger
         isCanPlayerMove = false;
         isPlayerRun = false;
     }
+
+    public static void Jump(bool jump)
+    {
+        isCanPlayerJump = jump;
+    }
+
+    public static void Attack(bool attack)
+    {
+        isCanPlayerAttack = attack;
+    }
 }
