@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class playerControll : MonoBehaviour
+public class PlayerControll : MonoBehaviour
 {
 
-    public int move = 20;
+    public int move = 70;
+    public int running = 140;
     public int jump = 5;
 
     Rigidbody2D rb;
@@ -20,16 +21,38 @@ public class playerControll : MonoBehaviour
     
     void FixedUpdate()
     {
-        Move(move);
+        if (GameModeManger.isCanPlayerMove)
+        {
+            if (GameModeManger.isPlayerRun)
+            {
+                Move(running);
+                Debug.Log("Run");
+            } else
+            {
+                Move(move);
+                Debug.Log("Move");
+            }
+        }
         KeyEvent();
     }
 
     private void KeyEvent()
     {
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space) && GameModeManger.isCanPlayerJump)
         {
             Jump(jump);
         }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            GameModeManger.Running();
+            Debug.Log("Running");
+        } 
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            GameModeManger.Moving();
+            Debug.Log("Moving");
+        }
+
     }
 
     private void Move(int _move)
